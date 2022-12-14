@@ -1,18 +1,11 @@
 import { Router } from 'express'
-import { create } from '../database/controller/create'
-import { fetch } from '../database/controller/fetch'
-import { remove } from '../database/controller/remove'
+import session from './session'
+
 
 const router = Router()
 
 
-// router.route('/', login)
-router.route('/user')
-	.get(fetch)
-	.post(create)
-	// .put()
-	.delete(remove)
-
+router.use('/session', session)
 
 
 export default router

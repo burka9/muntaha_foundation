@@ -1,7 +1,8 @@
 import 'dotenv/config'
 import { Sequelize } from 'sequelize'
 import { logger } from '../logger'
-import { initUser } from './models/user'
+import { initUserLog } from './log'
+import { initUser } from './user'
 
 
 const sequelize = new Sequelize({
@@ -14,6 +15,9 @@ const sequelize = new Sequelize({
 })
 
 
+// function initDefaultUsers(): Promise<void> {}
+
+
 export function initDatabase() {
 	sequelize.authenticate()
 		.then(() => {
@@ -24,10 +28,15 @@ export function initDatabase() {
 		})
 
 	initUser(sequelize)
+	initUserLog(sequelize)
 
-	sequelize.sync()
+	sequelize.sync({ force: true })
 		.then(() => {
 			logger.info(`user table created!`)
+			// return initDefaultUsers()
+		})
+		.then(() => {
+			logger.info('default users created')
 		})
 		.catch(err => {
 			logger.error(`error creating user table.`)
