@@ -78,9 +78,14 @@ export const initUser = (sequelize: Sequelize) => {
 		}
 	}, {
 		hooks: {
-			beforeCreate: (u: any) => {
-				u.password = u.password && u.password != "" ? bcrypt.hashSync(u.password, 10) : "";
-			}
+			beforeBulkCreate: (users, options) => {
+				users.forEach((user: UserModel) => {
+					user.password = user.password && user.password != "" ? bcrypt.hashSync(user.password, 10) : ""
+				})
+			},
+			beforeUpdate: (user, options) => {
+				user.password = user.password && user.password != "" ? bcrypt.hashSync(user.password, 10) : ""
+			},
 		}
 	})
 }

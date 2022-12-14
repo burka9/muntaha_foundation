@@ -12,7 +12,7 @@ export async function update(req: Request, res: Response) {
 			id: req.body.id
 		}, req.body.user)
 		logger.info('update complete')
-		res.status(200).json({ affectedCount: result })
+		res.status(200).json({ affectedCount: result[0] })
 	} catch(err: any) {
 		commonReponseError(err, res)
 	}
