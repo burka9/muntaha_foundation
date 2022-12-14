@@ -7,8 +7,8 @@ import { initDatabase } from './database/config'
 
 
 // get console arguments
-const host = process.argv[2] || '127.0.0.1'
-const port = parseInt(process.argv[3]) || 3000
+const host = process.env.SERVER_HOST || '127.0.0.1'
+const port = parseInt(process.env.SERVER_PORT || '4000')
 let retry = 0
 
 
