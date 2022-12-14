@@ -12,7 +12,7 @@ let user: ModelStatic<any>
 
 
 export interface UserModel {
-	id: number,
+	id?: number,
 	name: string,
 	username: string,
 	password: string,
@@ -21,27 +21,31 @@ export interface UserModel {
 
 export const User = {
 	create(data: UserModel): Promise<any> {
-		if (user === undefined) return Promise.reject('database not defined')
-		return create(user, data)
+		if (user === undefined) throw new Error('database not defined')
+		return create(user, [data])
+	},
+	createMany(array: UserModel[]): Promise<any> {
+		if (user === undefined) throw new Error('database not defined')
+		return create(user, array)
 	},
 	fetchAll(filter?: object, withPassword?: true): Promise<UserModel[]> {
-		if (user === undefined) return Promise.reject('database not defined')
+		if (user === undefined) throw new Error('database not defined')
 		return fetch(user, filter, withPassword)
 	},
 	fetchByUsername(username: string, withPassword?: true): Promise<UserModel[]> {
-		if (user === undefined) return Promise.reject('database not defined')
+		if (user === undefined) throw new Error('database not defined')
 		return fetch(user, { username }, withPassword)
 	},
 	update(filter: object, data: object): Promise<[affectedCount: number]> {
-		if (user === undefined) return Promise.reject('database not defined')
+		if (user === undefined) throw new Error('database not defined')
 		return update(user, filter, data)
 	},
 	removeById(id: number): Promise<number> {
-		if (user === undefined) return Promise.reject('database not defined')
+		if (user === undefined) throw new Error('database not defined')
 		return remove(user, { id })
 	},
 	removeByUsername(username: string): Promise<number> {
-		if (user === undefined) return Promise.reject('database not defined')
+		if (user === undefined) throw new Error('database not defined')
 		return remove(user, { username })
 	}
 }

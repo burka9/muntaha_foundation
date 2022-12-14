@@ -16,23 +16,23 @@ export interface UserLogModel {
 
 export const UserLog = {
 	create(data: UserLogModel): Promise<any> {
-		if (userLog === undefined) Promise.reject('database not defined')
+		if (userLog === undefined) throw new Error('database not defined')
 		return create(userLog, data)
 	},
 	fetchByUsername(username: string): Promise<any[]> {
-		if (userLog === undefined) Promise.reject('database not defined')
+		if (userLog === undefined) throw new Error('database not defined')
 		return fetch(userLog, { username })
 	},
 	fetchByToken(token: string): Promise<any[]> {
-		if (userLog === undefined) Promise.reject('database not defined')
+		if (userLog === undefined) throw new Error('database not defined')
 		return fetch(userLog, { token })
 	},
 	fetchByUsernameAndToken(username: string, token: string): Promise<any[]> {
-		if (userLog === undefined) Promise.reject('database not defined')
+		if (userLog === undefined) throw new Error('database not defined')
 		return fetch(userLog, { username, token })
 	},
 	removeByUsernameAndToken(username: string, token: string): Promise<number> {
-		if (userLog === undefined) Promise.reject('database not defined')
+		if (userLog === undefined) throw new Error('database not defined')
 		return remove(userLog, { username, token })
 	}
 }
