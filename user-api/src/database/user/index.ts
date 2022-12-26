@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt'
 import { Sequelize, DataTypes, ModelStatic, ENUM } from 'sequelize'
 import { logger } from '../../logger'
+import { UserModel } from '../../types/userModel'
 import { create } from './create'
 import { fetch } from './fetch'
 import { remove } from './remove'
@@ -10,33 +11,24 @@ const { STRING, INTEGER } = DataTypes
 
 let user: ModelStatic<any>
 
-
-export interface UserModel {
-	id?: number,
-	name: string,
-	username: string,
-	password: string,
-	user_type: string,
-}
-
 export const User = {
-	create(data: UserModel): Promise<any> {
+	create(data: Omit<UserModel, 'id'>): Promise<any> {
 		if (user === undefined) throw new Error('database not defined')
 		return create(user, [data])
 	},
-	createMany(array: UserModel[]): Promise<any> {
+	createMany(array: Omit<UserModel, 'id'>[]): Promise<any> {
 		if (user === undefined) throw new Error('database not defined')
 		return create(user, array)
 	},
-	fetchAll(filter?: object, withPassword?: true): Promise<UserModel[]> {
+	fetchAll(filter?: object, withPassword?: boolean): Promise<Partial<UserModel>[]> {
 		if (user === undefined) throw new Error('database not defined')
 		return fetch(user, filter, withPassword)
 	},
-	fetchByUsername(username: string, withPassword?: true): Promise<UserModel[]> {
+	fetchByUsername(username: string, withPassword?: boolean): Promise<Partial<UserModel>[]> {
 		if (user === undefined) throw new Error('database not defined')
 		return fetch(user, { username }, withPassword)
 	},
-	update(filter: object, data: object): Promise<[affectedCount: number]> {
+	update(filter: object, data: Partial<UserModel>): Promise<[affectedCount: number]> {
 		if (user === undefined) throw new Error('database not defined')
 		return update(user, filter, data)
 	},
