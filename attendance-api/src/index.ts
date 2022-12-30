@@ -1,9 +1,11 @@
 import 'dotenv/config'
-import http from 'http'
+import { createServer } from 'http'
 import express from 'express'
 import { logger } from './logger'
 import routes from './routes'
 import { initDatabase } from './database/config'
+import { mkdirSync } from 'fs'
+import { initSocket } from './socket'
 
 
 // get console arguments
@@ -25,11 +27,18 @@ if (process.env.NODE_ENV === 'development')
 // init database
 initDatabase()
 
+// create directories
+mkdirSync(process.env.VISITED_USER_UPLOAD_PATH || 'uploads', { recursive: true })
+mkdirSync(process.env.BENEFICIARY_UPLOAD_PATH || 'uploads/beneficiary', { recursive: true })
+
 
 // init server
-const server = http.createServer(app)
+const server = createServer(app)
 server
-	.listen(port, host, () => logger.info(`server started: ${host}:${port + retry}`))
+	.listen(port, host, () => {
+		initSocket(server)
+		logger.info(`server started: ${host}:${port + retry}`)
+	})
 	.on('error', (error: any) => {
 		if (error.code === 'EADDRINUSE') {
 			logger.info(`Address in use. Retrying... ${retry}`)

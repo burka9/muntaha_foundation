@@ -1,6 +1,12 @@
 import 'dotenv/config'
 import { Sequelize } from 'sequelize'
 import { logger } from '../logger'
+import { initBeneficiary } from './beneficiary'
+import { initBeneficiaryStatus } from './beneficiaryStatus'
+import { initLogList } from './logList'
+import { initOrderList } from './orderList'
+import { initPendingUser } from './pendingUser'
+import { initVisitedUser } from './visitedUser'
 
 
 const sequelize = new Sequelize({
@@ -10,7 +16,7 @@ const sequelize = new Sequelize({
 	password: process.env.DB_PASSWORD,
 	database: process.env.DB_NAME,
 	port: parseInt(process.env.DB_PORT || '3306'),
-	logging: log => logger.info(log)
+	logging: log => logger.verbose(log)
 })
 
 
@@ -23,7 +29,14 @@ export function initDatabase() {
 			logger.error(err)
 		})
 
-	sequelize.sync({ force: true })
+	initPendingUser(sequelize)
+	initVisitedUser(sequelize)
+	initBeneficiary(sequelize)
+	initBeneficiaryStatus(sequelize)
+	initOrderList(sequelize)
+	initLogList(sequelize)
+
+	sequelize.sync({ force: false })
 		.then(() => {
 			logger.info('tables created')
 		})
