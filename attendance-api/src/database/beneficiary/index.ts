@@ -22,7 +22,7 @@ export const Beneficiary = {
 		if (beneficiary === undefined) throw new Error('database not defined')
 		return create(beneficiary, array)
 	},
-	fetchAll(filter?: Partial<BeneficiaryModel>): Promise<BeneficiaryModel[]> {
+	fetchAll(filter?: Partial<BeneficiaryModel> | any): Promise<BeneficiaryModel[]> {
 		if (beneficiary === undefined) throw new Error('database not defined')
 		return fetch(beneficiary, filter)
 	},

@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { Beneficiary } from "../../database/beneficiary";
-import { logger } from "../../logger";
-import { FetchBeneficiaryListResponse } from "../../types/beneficiary";
-import commonResponseError from "../../util/commonResponseError";
+import { Beneficiary } from "../../../database/beneficiary";
+import { logger } from "../../../logger";
+import { FetchBeneficiaryListResponse } from "../../../types/beneficiary";
+import commonResponseError from "../../../util/commonResponseError";
 
 export async function fetchAll(req: Request, res: Response) {
 	logger.info('fetching all beneficiary list...')

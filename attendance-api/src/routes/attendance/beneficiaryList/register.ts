@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { Beneficiary } from "../../database/beneficiary";
-import { logger } from "../../logger";
-import { RegisterBeneficiaryRequest } from "../../types/beneficiary";
-import commonResponseError from "../../util/commonResponseError";
+import { Beneficiary } from "../../../database/beneficiary";
+import { logger } from "../../../logger";
+import { RegisterBeneficiaryRequest } from "../../../types/beneficiary";
+import commonResponseError from "../../../util/commonResponseError";
 
 export async function register(req: Request, res: Response) {
 	logger.info(`registering beneficiary...`)

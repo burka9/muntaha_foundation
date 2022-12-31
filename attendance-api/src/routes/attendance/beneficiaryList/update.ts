@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { resolve } from "path";
-import { Beneficiary } from "../../database/beneficiary";
-import { logger } from "../../logger";
-import { BeneficiaryModel, UpdateBeneficiaryRequest } from "../../types/beneficiary";
-import commonResponseError from "../../util/commonResponseError";
-import { deleteFile } from "../../util/fileUpload";
+import { Beneficiary } from "../../../database/beneficiary";
+import { logger } from "../../../logger";
+import { BeneficiaryModel, UpdateBeneficiaryRequest } from "../../../types/beneficiary";
+import commonResponseError from "../../../util/commonResponseError";
+import { deleteFile } from "../../../util/fileUpload";
 
 export async function update(req: Request, res: Response) {
 	const { id }: UpdateBeneficiaryRequest = req.body

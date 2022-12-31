@@ -19,7 +19,7 @@ export const LogList = {
 		if (logList === undefined) throw new Error('database not defined')
 		return create(logList, data)
 	},
-	fetchAll(filter?: Partial<LogListModel>): Promise<LogListModel[]> {
+	fetchAll(filter?: Partial<LogListModel> | any): Promise<LogListModel[]> {
 		if (logList === undefined) throw new Error('database not defined')
 		return fetch(logList, filter)
 	},

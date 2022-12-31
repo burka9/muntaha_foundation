@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { beneficiaryUploadHandler } from '../../util/fileUpload'
+import { beneficiaryUploadHandler } from '../../../util/fileUpload'
 import { fetchAll } from './fetchAll'
 import { register } from './register'
 import { removeById } from './removeById'

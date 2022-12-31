@@ -1,12 +1,12 @@
 import 'dotenv/config'
 import { resolve } from 'path'
 import { Request, Response } from "express";
-import { VisitedUser } from "../../database/visitedUser";
-import { logger } from "../../logger";
-import { BeneficiaryModel } from "../../types/beneficiary";
-import commonResponseError from "../../util/commonResponseError";
-import { copyFile } from "../../util/fileUpload";
-import { Beneficiary } from '../../database/beneficiary';
+import { VisitedUser } from "../../../database/visitedUser";
+import { logger } from "../../../logger";
+import { BeneficiaryModel } from "../../../types/beneficiary";
+import commonResponseError from "../../../util/commonResponseError";
+import { copyFile } from "../../../util/fileUpload";
+import { Beneficiary } from "../../../database/beneficiary";
 
 export async function addToBeneficiaryList(req: Request, res: Response) {
 	const { id } = req.params
