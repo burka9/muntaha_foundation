@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { PendingUser } from "../../database/pendingUser";
-import { VisitedUser } from "../../database/visitedUser";
-import { logger } from "../../logger";
-import { VisitPendingUserRequest } from "../../types/pendingUser";
-import { VisitedUserModel } from "../../types/visitedUser";
-import commonResponseError from "../../util/commonResponseError";
-import { deleteFile } from "../../util/fileUpload";
+import { PendingUser } from "../../../database/pendingUser";
+import { VisitedUser } from "../../../database/visitedUser";
+import { logger } from "../../../logger";
+import { VisitPendingUserRequest } from "../../../types/pendingUser";
+import { VisitedUserModel } from "../../../types/visitedUser";
+import commonResponseError from "../../../util/commonResponseError";
+import { deleteFile } from "../../../util/fileUpload";
 
 export async function markVisited(req: Request, res: Response) {
 	const body: VisitPendingUserRequest = req.body

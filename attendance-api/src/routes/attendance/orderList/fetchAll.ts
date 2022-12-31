@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { OrderList } from "../../database/orderList";
-import { logger } from "../../logger";
-import { FetchOrderListResponse } from "../../types/orderList";
-import commonResponseError from "../../util/commonResponseError";
+import { OrderList } from "../../../database/orderList";
+import { logger } from "../../../logger";
+import { FetchOrderListResponse } from "../../../types/orderList";
+import commonResponseError from "../../../util/commonResponseError";
 
 export async function fetchAll(req: Request, res: Response) {
 	logger.info('fetching order list...')

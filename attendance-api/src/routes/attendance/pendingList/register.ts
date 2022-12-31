@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { PendingUser } from "../../database/pendingUser";
-import { logger } from "../../logger";
-import { CreatePendingUserRequest } from "../../types/pendingUser";
-import commonResponseError from "../../util/commonResponseError";
+import { PendingUser } from "../../../database/pendingUser";
+import { logger } from "../../../logger";
+import { CreatePendingUserRequest } from "../../../types/pendingUser";
+import commonResponseError from "../../../util/commonResponseError";
 
 export async function create(req: Request, res: Response) {
 	logger.info('creating pending user...')

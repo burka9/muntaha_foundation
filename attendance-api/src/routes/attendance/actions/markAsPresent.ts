@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
-import { Beneficiary } from "../../database/beneficiary";
-import { BeneficiaryStatus } from "../../database/beneficiaryStatus";
-import { OrderList } from "../../database/orderList";
-import { logger } from "../../logger";
-import commonResponseError from "../../util/commonResponseError";
+import { Beneficiary } from "../../../database/beneficiary";
+import { BeneficiaryStatus } from "../../../database/beneficiaryStatus";
+import { OrderList } from "../../../database/orderList";
+import { logger } from "../../../logger";
+import { emitBeneficiaryCount, emitPresentCount } from "../../../socket";
+import commonResponseError from "../../../util/commonResponseError";
 
 export async function markAsPresent(req: Request, res: Response) {
 	const { id } = req.params
@@ -20,6 +21,13 @@ export async function markAsPresent(req: Request, res: Response) {
 			name: beneficiary.name,
 			timestamp: new Date()
 		})
+
+		// notify present and beneficiary count update
+		try {
+			await emitPresentCount()
+			await emitBeneficiaryCount()
+		} catch {}
+		
 		logger.info(`marked as present`)
 		res.sendStatus(200)
 	} catch(err: any) {

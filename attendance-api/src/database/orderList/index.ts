@@ -26,6 +26,10 @@ export const OrderList = {
 	removeById(id: number): Promise<number> {
 		if (orderList === undefined) throw new Error('database not defined')
 		return remove(orderList, { id })
+	},
+	removeAll(): Promise<number> {
+		if (orderList === undefined) throw new Error('database not defined')
+		return remove(orderList)
 	}
 }
 

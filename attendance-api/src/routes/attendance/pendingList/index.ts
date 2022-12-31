@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { visitUploadHandler } from '../../util/fileUpload'
+import { visitUploadHandler } from '../../../util/fileUpload'
 import fetchAll from './fetchAll'
 import { markVisited } from './markVisited'
 import { create } from './register'

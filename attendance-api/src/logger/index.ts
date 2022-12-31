@@ -28,9 +28,11 @@ const setLogger = (level: string, filename?: string) => {
 const infoLogger = setLogger('info')
 const errorLogger = setLogger('error')
 const verboseLogger = setLogger('verbose')
+const debugLogger = setLogger('debug')
 
 export const logger = {
 	info: (log: string) => infoLogger.info(log),
 	error: (log: string) => errorLogger.error(log),
 	verbose: (log: string) => verboseLogger.verbose(log),
+	debug: (log: string) => debugLogger.debug(log)
 }
