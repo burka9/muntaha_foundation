@@ -76,6 +76,9 @@ export const initBeneficiary = (sequelize: Sequelize) => {
 			type: INTEGER,
 			allowNull: false,
 		},
+		maritalStatus: {
+			type: STRING
+		},
 		children: {
 			type: STRING
 		},
@@ -100,7 +103,7 @@ export const initBeneficiary = (sequelize: Sequelize) => {
 	}, {
 		hooks: {
 			afterCreate(instance) {
-				let temp = `0000${instance.id}`.slice(-3)
+				const temp = `0000${instance.id}`.slice(-3)
 				instance.muntahaId = `MUN-${temp}`
 				Beneficiary.updateById(instance.id, instance.dataValues)
 					.then(() => {

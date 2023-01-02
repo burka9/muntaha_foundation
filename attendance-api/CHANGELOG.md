@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v1.1.1 / 02/01/2023
+### **Bug fixed**
+- added marital status column
+- changed image and recoring to optional on mark as visited
+- made static assets available
+- on mark as visited, children property, request is json string and response is parsed JSON
+
 ## v1.1.0 / 31/12/2022
 ### **Added**
 - added "/attendance" before every route

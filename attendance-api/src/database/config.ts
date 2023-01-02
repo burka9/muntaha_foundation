@@ -36,7 +36,7 @@ export function initDatabase() {
 	initOrderList(sequelize)
 	initLogList(sequelize)
 
-	sequelize.sync({ force: false })
+	sequelize.sync({ force: process.env.FORCE_DATABASE_SYNC === 'true' })
 		.then(() => {
 			logger.info('tables created')
 		})

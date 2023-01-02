@@ -20,6 +20,11 @@ export async function addToBeneficiaryList(req: Request, res: Response) {
 		const beneficiary: Partial<BeneficiaryModel> = { ...visistedUser.dataValues }
 		delete beneficiary['id']
 
+		// convert children json to string
+		try {
+			beneficiary['children'] = JSON.stringify(beneficiary['children'])
+		} catch {}
+
 		// rename files
 		try {
 			copyFile(

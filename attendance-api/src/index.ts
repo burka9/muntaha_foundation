@@ -6,6 +6,7 @@ import routes from './routes'
 import { initDatabase } from './database/config'
 import { mkdirSync } from 'fs'
 import { initSocket } from './socket'
+import { resolve } from 'path'
 
 
 // get console arguments
@@ -19,6 +20,10 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use('/api/v0', routes)
+
+// static files url
+app.use('/api/v0/attendance/assets', express.static(process.env.VISITED_USER_UPLOAD_PATH || 'uploads'))
+app.use('/api/v0/attendance/assets', express.static(process.env.BENEFICIARY_UPLOAD_PATH || 'uploads/beneficiary'))
 
 if (process.env.NODE_ENV === 'development')
 	app.get('/ping', (req: express.Request, res: express.Response) => res.send('pong'))

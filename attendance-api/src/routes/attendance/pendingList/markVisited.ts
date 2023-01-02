@@ -12,8 +12,6 @@ export async function markVisited(req: Request, res: Response) {
 	const files = req.files as { [fieldname: string]: Express.Multer.File[] }
 	logger.info(`marking pending user ${body.id} as visited...`)
 
-	const { image, recording } = files
-
 	try {
 		// fetch user from pending user table
 		const pendingUser = (await PendingUser.fetchById(body.id))[0]
@@ -28,12 +26,12 @@ export async function markVisited(req: Request, res: Response) {
 		
 		// set file names
 		try {
-			visitedUser['image'] = image[0].filename
+			visitedUser['image'] = files.image[0].filename
 		} catch {}
 		try {
-			visitedUser['recording'] = recording[0].filename
+			visitedUser['recording'] = files.recording[0].filename
 		} catch {}
-		
+
 		await VisitedUser.create(visitedUser as Omit<VisitedUserModel, 'id'>)
 		await PendingUser.removeById(body.id)
 		res.sendStatus(201)
@@ -41,7 +39,7 @@ export async function markVisited(req: Request, res: Response) {
 		commonResponseError(err, res)
 		logger.info(`deleting files...`)
 		// delete files
-		if (image) image.forEach(i => deleteFile(i.path))
-		if (recording) recording.forEach(r => deleteFile(r.path))
+		if (files.image) files.image.forEach(i => deleteFile(i.path))
+		if (files.recording) files.recording.forEach(r => deleteFile(r.path))
 	}
 }

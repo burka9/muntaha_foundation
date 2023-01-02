@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import { DataTypes, ModelStatic, Sequelize, ENUM } from "sequelize";
 import { logger } from "../../logger";
-import { VisitedUserModel } from "../../types/visitedUser";
+import { ModifiedVisitedUserModel, VisitedUserModel } from "../../types/visitedUser";
 import { deleteFile } from "../../util/fileUpload";
 import { create } from "./create";
 import { fetch } from "./fetch";
@@ -18,11 +18,11 @@ export const VisitedUser = {
 		if (visitedUser === undefined) throw new Error('database not defined')
 		return create(visitedUser, [data])
 	},
-	fetchAll(filter?: Partial<VisitedUserModel>): Promise<VisitedUserModel[]> {
+	fetchAll(filter?: Partial<VisitedUserModel>): Promise<ModifiedVisitedUserModel[]> {
 		if (visitedUser === undefined) throw new Error('database not defined')
 		return fetch(visitedUser, filter)
 	},
-	fetchById(id: number): Promise<VisitedUserModel[]> {
+	fetchById(id: number): Promise<ModifiedVisitedUserModel[]> {
 		if (visitedUser === undefined) throw new Error('database not defined')
 		return fetch(visitedUser, { id })
 	},
@@ -68,6 +68,9 @@ export const initVisitedUser = (sequelize: Sequelize) => {
 			type: INTEGER,
 			allowNull: false,
 		},
+		maritalStatus: {
+			type: STRING
+		},
 		children: {
 			type: STRING
 		},
@@ -93,6 +96,13 @@ export const initVisitedUser = (sequelize: Sequelize) => {
 		},
 	}, {
 		hooks: {
+			afterFind(instances) {
+				instances.forEach((instance: any) => {
+					try {
+						instance.children = JSON.parse(instance.children)
+					} catch {}
+				})
+			},
 			beforeDestroy({id, image, recording}) {
 				logger.info(`deleting files for ${id}`)
 				try {

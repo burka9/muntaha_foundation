@@ -4,7 +4,7 @@ export interface VisitedUserBefore extends PendingUserModel {}
 export interface VisitedUserAfter {
 	age: number,
 	maritalStatus: string,
-	children: any,
+	children: string, // json string
 	jobStatus: string,
 	shelterStatus: string,
 	rentAmount: number,
@@ -13,12 +13,22 @@ export interface VisitedUserAfter {
 	remark: string
 }
 
+export interface ModifiedVisitedUserModel {
+	children: ChildrenModel[]
+}
+
+export interface ChildrenModel {
+	name: string,
+	age: number,
+	schooling: string
+}
+
 export interface VisitedUserModel extends VisitedUserBefore, VisitedUserAfter {} 
 
 export interface FetchVisitedListRequest {}
 export interface FetchVisitedListReponse {
 	success: true,
-	list: VisitedUserModel[]
+	list: ModifiedVisitedUserModel[]
 }
 
 export interface RemoveVisitedListRequest {}

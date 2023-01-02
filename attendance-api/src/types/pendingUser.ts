@@ -23,5 +23,6 @@ export interface RemovePendingUserResponse {
 }
 
 export interface VisitPendingUserRequest extends VisitedUserAfter {
-	id: number
+	id: number,
+	children: string,
 }
