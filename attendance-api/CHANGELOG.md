@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v1.1.2 / 04/01/2023
+### **Bug fixed**
+- joined beneficiary status when fetching beneficiary list
+- removed duplicate entries in order list when invoking present multiple times
+
 ## v1.1.1 / 02/01/2023
 ### **Bug fixed**
 - added marital status column

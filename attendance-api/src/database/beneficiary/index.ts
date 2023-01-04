@@ -22,13 +22,13 @@ export const Beneficiary = {
 		if (beneficiary === undefined) throw new Error('database not defined')
 		return create(beneficiary, array)
 	},
-	fetchAll(filter?: Partial<BeneficiaryModel> | any): Promise<BeneficiaryModel[]> {
+	fetchAll(filter?: Partial<BeneficiaryModel> | any, options?: object): Promise<BeneficiaryModel[]> {
 		if (beneficiary === undefined) throw new Error('database not defined')
-		return fetch(beneficiary, filter)
+		return fetch(beneficiary, filter, options)
 	},
-	fetchById(id: number): Promise<BeneficiaryModel[]> {
+	fetchById(id: number, options?: object): Promise<BeneficiaryModel[]> {
 		if (beneficiary === undefined) throw new Error('database not defined')
-		return fetch(beneficiary, { id })
+		return fetch(beneficiary, { id }, options)
 	},
 	update(filter: Partial<BeneficiaryModel>, data: Partial<BeneficiaryModel>): Promise<[affectedCount: number]> {
 		if (beneficiary === undefined) throw new Error('database not defined')
@@ -41,6 +41,10 @@ export const Beneficiary = {
 	removeById(id: number): Promise<number> {
 		if (beneficiary === undefined) throw new Error('database not defined')
 		return remove(beneficiary, { id })
+	},
+	getModel(): ModelStatic<any> {
+		if (beneficiary === undefined) throw new Error('database not defined')
+		return beneficiary
 	}
 }
 

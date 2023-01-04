@@ -44,7 +44,8 @@ export const initOrderList = (sequelize: Sequelize) => {
 		},
 		muntahaId: {
 			type: STRING,
-			allowNull: false
+			allowNull: false,
+			unique: true
 		},
 		name: {
 			type: STRING,

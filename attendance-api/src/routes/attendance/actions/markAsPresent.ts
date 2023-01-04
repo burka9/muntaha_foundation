@@ -31,6 +31,10 @@ export async function markAsPresent(req: Request, res: Response) {
 		logger.info(`marked as present`)
 		res.sendStatus(200)
 	} catch(err: any) {
+		try {
+			if (err.errors[0].message === 'muntahaId must be unique')
+				err.errors[0].message = 'beneficiary is already marked present'
+		} catch {}
 		commonResponseError(err, res)
 	}
 }

@@ -1,6 +1,7 @@
 import { DataTypes, ENUM, ModelStatic, Sequelize } from "sequelize";
 import { logger } from "../../logger";
 import { BeneficiaryStatusModel } from "../../types/beneficiaryStatus";
+import { Beneficiary } from "../beneficiary";
 import { create } from "./create";
 import { fetch } from "./fetch";
 import { update } from "./update";
@@ -25,6 +26,10 @@ export const BeneficiaryStatus = {
 	updateById(id: number, data: Partial<BeneficiaryStatusModel>): Promise<[affectedCount: number]> {
 		if (beneficiaryStatus === undefined) throw new Error('database not defined')
 		return update(beneficiaryStatus, { id }, data)
+	},
+	getModel(): ModelStatic<any> {
+		if (beneficiaryStatus === undefined) throw new Error('database not defined')
+		return beneficiaryStatus
 	}
 }
 
@@ -52,4 +57,11 @@ export const initBeneficiaryStatus = (sequelize: Sequelize) => {
 			onUpdate: 'CASCADE'
 		}
 	})
+
+	// set relationship
+	try {
+		Beneficiary.getModel().hasOne(BeneficiaryStatus.getModel())
+	} catch (err: any) {
+		logger.error(err.message)
+	}
 }
