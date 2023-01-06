@@ -22,6 +22,7 @@ app.use(express.urlencoded({ extended: false }))
 app.use('/api/v0', routes)
 
 // static files url
+app.use('/api/v0/attendance/assets', express.static(process.env.STATIC_ASSETS_PATH || 'public'))
 app.use('/api/v0/attendance/assets', express.static(process.env.VISITED_USER_UPLOAD_PATH || 'uploads'))
 app.use('/api/v0/attendance/assets', express.static(process.env.BENEFICIARY_UPLOAD_PATH || 'uploads/beneficiary'))
 
@@ -33,6 +34,7 @@ if (process.env.NODE_ENV === 'development')
 initDatabase()
 
 // create directories
+mkdirSync(process.env.STATIC_ASSETS_PATH || 'public', { recursive: true })
 mkdirSync(process.env.VISITED_USER_UPLOAD_PATH || 'uploads', { recursive: true })
 mkdirSync(process.env.BENEFICIARY_UPLOAD_PATH || 'uploads/beneficiary', { recursive: true })
 

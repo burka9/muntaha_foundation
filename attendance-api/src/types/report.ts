@@ -8,7 +8,8 @@ export interface AttendanceReportModel {
 export interface AbsentReportListModel {
 	id: number,
 	muntahaId: string,
-	name: string
+	name: string,
+	phone: string
 }
 
 export interface AttendanceReportRequest {

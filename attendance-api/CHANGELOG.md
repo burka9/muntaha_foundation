@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v.1.1.2 / .6/01/2023
+### **Fixed**
+- added another directory for static assets
+- absent report includes phone attribute
+
 ## v1.1.2 / 04/01/2023
 ### **Bug fixed**
 - joined beneficiary status when fetching beneficiary list

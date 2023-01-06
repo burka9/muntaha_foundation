@@ -32,7 +32,8 @@ export async function absentReport(req: Request, res: Response) {
 		const list: AbsentReportListModel[] = beneficiaries.map(beneficiary => ({
 			id: beneficiary.id,
 			muntahaId: beneficiary.muntahaId,
-			name: beneficiary.name
+			name: beneficiary.name,
+			phone: beneficiary.phone
 		}))
 
 		const response: AbsentReportResponse = {
