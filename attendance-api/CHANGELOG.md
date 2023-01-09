@@ -1,6 +1,10 @@
 # CHANGELOG
 
-## v.1.1.2 / .6/01/2023
+## v.1.1.3 / 09/01/2023
+### **Fixed**
+- absent report show only absentees with 3+ days absent status
+
+## v.1.1.2 / 06/01/2023
 ### **Fixed**
 - added another directory for static assets
 - absent report includes phone attribute

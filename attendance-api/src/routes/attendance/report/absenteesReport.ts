@@ -22,12 +22,18 @@ export async function absentReport(req: Request, res: Response) {
 			}
 		})
 
+		const temp = logList.filter(log => log.status === 'absent').map(log => log.beneficiaryId)
+		
+		const absentList = [...new Set(temp)].map(item => ({
+			id: item,
+			count: temp.filter(i => i === item).length
+		}))
+
 		const beneficiaries = await Beneficiary.fetchAll({
 			id: {
-				[Op.in]: logList.filter(log => log.status === 'absent').map(log => log.beneficiaryId)
+				[Op.in]: absentList.filter(item => item.count >= 3).map(item => item.id)
 			}
 		})
-
 
 		const list: AbsentReportListModel[] = beneficiaries.map(beneficiary => ({
 			id: beneficiary.id,

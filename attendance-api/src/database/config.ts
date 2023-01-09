@@ -26,6 +26,8 @@ export function initDatabase() {
 			logger.info('database connected')
 		})
 		.catch(err => {
+			console.log(err)
+			logger.error('database connection error')
 			logger.error(err)
 		})
 
@@ -41,6 +43,7 @@ export function initDatabase() {
 			logger.info('tables created')
 		})
 		.catch(err => {
+			logger.error('database sync error')
 			logger.error(err)
 		})
 }
