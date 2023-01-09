@@ -1,2 +1,5 @@
 # Muntaha Foudnation Attendance API
-version 0.0.0
+v1.0.0
+
+## Authors
+- [Biruk Ephrem](https://github.com/burka9) <birukeph@gmail.com>

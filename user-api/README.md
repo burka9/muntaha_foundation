@@ -1,2 +1,5 @@
 # Muntaha Foudnation User API
-version 0.0.0
+v0.4.3
+
+## Authors
+- [Biruk Ephrem](https://github.com/burka9) <birukeph@gmail.com>
