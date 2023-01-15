@@ -29,7 +29,7 @@ export const OrderList = {
 	},
 	removeAll(): Promise<number> {
 		if (orderList === undefined) throw new Error('database not defined')
-		return remove(orderList)
+		return remove(orderList, {}, { truncate: true })
 	}
 }
 

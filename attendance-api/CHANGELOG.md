@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v.1.1.4 / 15/01/2023
+### **Bug Fixed***
+- remove all from order list now actually does what it says
+
 ## v.1.1.3 / 09/01/2023
 ### **Fixed**
 - absent report show only absentees with 3+ days absent status
