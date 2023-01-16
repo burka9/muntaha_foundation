@@ -41,6 +41,9 @@ export const initSocket = (server: httpServer) => {
 	// new socket connection
 	io.on('connection', socket => {
 		logger.info(`socket ${socket.id} connected`)
+		emitPresentCount()
+		emitMealServed()
+		emitBeneficiaryCount()
 
 		socket.on('disconnect', () => {
 			logger.info(`socket ${socket.id} disconnected`)

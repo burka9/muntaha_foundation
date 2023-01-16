@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v.1.2.0 / 16/01/2023
+### **Added**
+- emits all socket events when a client connects
+
 ## v.1.1.4 / 15/01/2023
 ### **Bug Fixed***
 - remove all from order list now actually does what it says
