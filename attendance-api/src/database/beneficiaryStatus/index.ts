@@ -55,6 +55,13 @@ export const initBeneficiaryStatus = (sequelize: Sequelize) => {
 			},
 			onDelete: 'CASCADE',
 			onUpdate: 'CASCADE'
+		},
+		beneficiaryName: {
+			type: STRING,
+			references: {
+				model: 'beneficiaries',
+				key: 'name',
+			}
 		}
 	})
 

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v.1.3.0 / 01/02/2023
+### **Added**
+- added name column to beneficiaryStatus and loglist table
+
 ## v.1.2.0 / 16/01/2023
 ### **Added**
 - emits all socket events when a client connects

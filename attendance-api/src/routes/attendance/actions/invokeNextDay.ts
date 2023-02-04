@@ -17,6 +17,7 @@ export async function invokeNextDay(req: Request, res: Response) {
 		await LogList.createMany(statuses.map((status: BeneficiaryStatusModel) => {
 			let logObject: Omit<LogListModel, 'id'> = {
 				beneficiaryId: status.beneficiaryId,
+				name: status.beneficiaryName,
 				status: status.status,
 				timestamp: new Date()
 			}

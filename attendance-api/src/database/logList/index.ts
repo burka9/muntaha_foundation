@@ -1,4 +1,4 @@
-import { DataTypes, ModelStatic, Sequelize } from "sequelize";
+import { DataTypes, ModelStatic, Sequelize, STRING } from "sequelize";
 import { logger } from "../../logger";
 import { LogListModel } from "../../types/logList";
 import { create } from "./create";
@@ -48,7 +48,10 @@ export const initLogList = (sequelize: Sequelize) => {
 				model: 'beneficiaries',
 				key: 'id',
 			},
-			allowNull: false
+			onDelete: 'SET NULL'
+		},
+		name: {
+			type: STRING,
 		},
 		status: {
 			type: ENUM,
