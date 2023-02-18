@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import { DataTypes, ModelStatic, Sequelize, ENUM } from "sequelize";
+import { DataTypes, ModelStatic, Sequelize, ENUM, BOOLEAN } from "sequelize";
 import { logger } from "../../logger";
 import { BeneficiaryModel } from "../../types/beneficiary";
 import { deleteFile } from "../../util/fileUpload";
@@ -103,6 +103,10 @@ export const initBeneficiary = (sequelize: Sequelize) => {
 		remark: {
 			type: STRING
 		},
+		deleted: {
+			type: BOOLEAN,
+			defaultValue: false
+		}
 
 	}, {
 		hooks: {

@@ -2,6 +2,7 @@ import { VisitedUserModel } from "./visitedUser";
 
 export interface BeneficiaryModel extends Omit<VisitedUserModel, 'recording'> {
 	muntahaId: string
+	deleted: boolean
 }
 
 export interface BeneficiaryModelExtended extends BeneficiaryModel {

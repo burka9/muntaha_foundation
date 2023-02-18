@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v.1.3.1 / 18/02/2023
+### **Patch**
+- added deleted column to beneficiaries
+- deleting beneficiary is changed to setting deleted value to true
+
 ## v.1.3.0 / 01/02/2023
 ### **Added**
 - added name column to beneficiaryStatus and loglist table

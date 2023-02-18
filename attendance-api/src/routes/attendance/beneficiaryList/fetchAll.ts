@@ -9,7 +9,7 @@ export async function fetchAll(req: Request, res: Response) {
 	logger.info('fetching all beneficiary list...')
 
 	try {
-		let result = await Beneficiary.fetchAll({}, {
+		let result = await Beneficiary.fetchAll({ deleted: false }, {
 			attributes: {
 				exclude: ['createdAt', 'updatedAt']
 			},
