@@ -32,7 +32,8 @@ export async function absentReport(req: Request, res: Response) {
 		const beneficiaries = await Beneficiary.fetchAll({
 			id: {
 				[Op.in]: absentList.filter(item => item.count >= 3).map(item => item.id)
-			}
+			},
+			deleted: false
 		})
 
 		const list: AbsentReportListModel[] = beneficiaries.map(beneficiary => ({

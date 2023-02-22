@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v.1.3.2 / 22/02/2023
+### **Patch**
+- absentees report used to send data of the "deleted" beneficiaries
+
 ## v.1.3.1 / 18/02/2023
 ### **Patch**
 - added deleted column to beneficiaries

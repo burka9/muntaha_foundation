@@ -107,7 +107,6 @@ export const initBeneficiary = (sequelize: Sequelize) => {
 			type: BOOLEAN,
 			defaultValue: false
 		}
-
 	}, {
 		hooks: {
 			afterCreate(instance) {
