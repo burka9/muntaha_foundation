@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v.1.3.3 / 24/02/2023
+### **Patch**
+- removed beneficiary name from beneficiary status and log list table
+
 ## v.1.3.2 / 22/02/2023
 ### **Patch**
 - absentees report used to send data of the "deleted" beneficiaries

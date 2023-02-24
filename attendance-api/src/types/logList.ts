@@ -1,7 +1,7 @@
 export interface LogListModel {
 	id: number;
 	beneficiaryId: number;
-	name: string;
+	// name: string;
 	status: 'present' | 'absent' | 'permission';
 	timestamp: Date;
 }
