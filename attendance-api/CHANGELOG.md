@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v.1.4.0 / 09/03/2023
+### **Added**
+- added auth for routes
+
 ## v.1.3.3 / 24/02/2023
 ### **Patch**
 - removed beneficiary name from beneficiary status and log list table

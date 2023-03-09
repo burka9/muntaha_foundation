@@ -1,6 +1,7 @@
 import 'dotenv/config'
 import { Sequelize } from 'sequelize'
 import { logger } from '../logger'
+import { initKey } from './key'
 import { initUserLog } from './log'
 import { initUser, User } from './user'
 
@@ -61,8 +62,9 @@ export function initDatabase() {
 
 	initUser(sequelize)
 	initUserLog(sequelize)
+	initKey(sequelize)
 
-	sequelize.sync({ force: true })
+	sequelize.sync({ force: process.env.FORCE_DB_SYNC === "true" })
 		.then(() => {
 			logger.info(`user table created!`)
 			return initDefaultUsers()
