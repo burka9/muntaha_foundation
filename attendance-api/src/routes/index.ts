@@ -9,6 +9,8 @@ const router = Router()
 router.use(async (req, res, next) => {
 	const { authorization } = req.headers
 
+	if (req.url.startsWith('/attendance/assets/')) return next()
+
 	try {
 		let result = await axios.get(`${process.env.SESSION_URL}/check`, {
 			headers: {

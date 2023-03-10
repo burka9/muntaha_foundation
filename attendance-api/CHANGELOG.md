@@ -1,6 +1,10 @@
 # CHANGELOG
 
-## v.1.4.1 / 09/03/2023
+## v.1.4.1 / 10/03/2023
+### **Patch**
+- removed auth for static assets
+
+## v.1.4.1 / 10/03/2023
 ### **Patch**
 - beneficairy count on socket request doesnt include the deleted beneficiaries
 
