@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v.1.4.1 / 09/03/2023
+### **Patch**
+- beneficairy count on socket request doesnt include the deleted beneficiaries
+
 ## v.1.4.0 / 09/03/2023
 ### **Added**
 - added auth for routes

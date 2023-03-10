@@ -17,7 +17,7 @@ async function getMealServed(): Promise<number> {
 }
 
 async function getBeneficiaryCount(): Promise<number> {
-	return (await Beneficiary.fetchAll()).length
+	return (await Beneficiary.fetchAll({ deleted: false })).length
 }
 
 export async function emitPresentCount(): Promise<void> {
