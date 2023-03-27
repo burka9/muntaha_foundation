@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v.1.4.2 / 27/03/2023
+### **Patch**
+- included registrationDate when fetching for beneficiary list
+- fixed bug when adding existing beneficiary without image
+
 ## v.1.4.1 / 10/03/2023
 ### **Patch**
 - removed auth for static assets

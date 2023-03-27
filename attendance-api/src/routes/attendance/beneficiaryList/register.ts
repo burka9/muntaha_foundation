@@ -9,11 +9,10 @@ export async function register(req: Request, res: Response) {
 	const beneficiary: RegisterBeneficiaryRequest = req.body
 	const files = req.files as { [fieldname: string]: Express.Multer.File[] }
 
-	const { image } = files
-
 	try {
 		// set filename
 		try {
+			const { image } = files
 			beneficiary['image'] = image[0].filename
 		} catch {}
 

@@ -11,7 +11,8 @@ export async function fetchAll(req: Request, res: Response) {
 	try {
 		let result = await Beneficiary.fetchAll({ deleted: false }, {
 			attributes: {
-				exclude: ['createdAt', 'updatedAt']
+				exclude: ['createdAt', 'updatedAt'],
+				include: [['createdAt', 'registrationDate']],
 			},
 			include: [
 				{
